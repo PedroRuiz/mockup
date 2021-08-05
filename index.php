@@ -37,9 +37,9 @@ $user = new \Mockup\Models\Users();
 // {
 //   var_dump($user->newUser([
 //     'ip_address'    =>  '127.0.0.1',
-//     'username'      =>  'xxxxxxxn@gmail.com',
+//     'username'      =>  'qazqazqaz@gmail.com',
 //     'password'      =>  password_hash('password',PASSWORD_BCRYPT,['cost'=>12]),
-//     'email'         =>  'xxxxxxxn@gmail.com',
+//     'email'         =>  'qazqazqaz@gmail.com',
 //     'active'        =>  1,
 //     'first_name'    =>  ucfirst('name'),
 //     'last_name'     =>  ucfirst('last name'),
@@ -60,9 +60,18 @@ $user = new \Mockup\Models\Users();
 //   die('Error--->' . $e->getMessage().PHP_EOL);
 // }
 
+// try
+// {
+//   var_dump($user->softUndelete('carmenmoon@gmail.com'));
+// }
+// catch(\PDOException $e)
+// {
+//   die('Error--->' . $e->getMessage().PHP_EOL);
+// }
+
 try
 {
-  var_dump($user->softUndelete('carmenmoon@gmail.com'));
+  var_dump($user->hardDelete('xxxxxxxn@gmail.com'));
 }
 catch(\PDOException $e)
 {

@@ -24,6 +24,7 @@ class Database
   protected $data = [];
   protected $connection;
   protected $rowCount;
+  protected $lastInsert;
 
 
   function __construct(bool $persistent = true)
@@ -54,7 +55,8 @@ class Database
   {
     $stmt = $this->connection->prepare($query, [\PDO::ATTR_CURSOR => \PDO::CURSOR_FWDONLY]);
     if( $params !==[] ) $stmt->execute($params);
-    $this->rowCount = $stmt->rowCount();
+    $this->rowCount   = $stmt->rowCount();
+    $this->lastInsert = $this->connection->lastInsertId();
     return $stmt->fetchAll($fetchStyle) ?? null;
   }
 }
